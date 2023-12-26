@@ -93,6 +93,13 @@ body {
   margin-right: 10px;
 }
 
+.error {
+  text-align: left;
+  font-size: 18px;
+  margin-top: 10px;
+  display: none;
+}
+
 .humidity,
 .wind {
   font-size: 28px;

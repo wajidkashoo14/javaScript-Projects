@@ -5,6 +5,7 @@ const humidity = document.querySelector(".humidity");
 const input = document.querySelector("#input");
 const btn = document.querySelector("#btn");
 const img = document.querySelector("#img");
+const errorMsge = document.querySelector(".error");
 
 const key = "45bdf602e7ecddf36059aee970898cec";
 const apiUrl =
@@ -12,24 +13,32 @@ const apiUrl =
 
 async function getWeather(cityName) {
   const response = await fetch(apiUrl + cityName + `&appid=${key}`);
-  const result = await response.json();
 
-  temp.innerHTML = Math.round(result.main.temp) + "°C";
-  city.innerHTML = result.name;
-  wind.innerHTML = result.wind.speed;
-  humidity.innerHTML = result.main.humidity + "%";
+  if (response.status === 404) {
+    errorMsge.style.display = "block";
+    errorMsge.style.color = "red";
+    document.querySelector(".weather").style.display = "none";
+  } else {
+    const result = await response.json();
 
-  const weather = result.weather[0].main;
+    temp.innerHTML = Math.round(result.main.temp) + "°C";
+    city.innerHTML = result.name;
+    wind.innerHTML = result.wind.speed;
+    humidity.innerHTML = result.main.humidity + "%";
 
-  if (weather === "Clouds") img.src = "images/clouds.png";
-  else if (weather === "Clear") img.src = "images/clear.png";
-  else if (weather === "Rain") img.src = "images/rain.png";
-  else if (weather === "Wind") img.src = "images/wind.png";
-  else if (weather === "Drizzle") img.src = "images/drizzle.png";
-  else if (weather === "Mist") img.src = "images/mist.png";
-  else if (weather === "Snow") img.src = "images/snow.png";
+    const weather = result.weather[0].main;
 
-  document.querySelector(".weather").style.display = "block";
+    if (weather === "Clouds") img.src = "images/clouds.png";
+    else if (weather === "Clear") img.src = "images/clear.png";
+    else if (weather === "Rain") img.src = "images/rain.png";
+    else if (weather === "Wind") img.src = "images/wind.png";
+    else if (weather === "Drizzle") img.src = "images/drizzle.png";
+    else if (weather === "Mist") img.src = "images/mist.png";
+    else if (weather === "Snow") img.src = "images/snow.png";
+
+    errorMsge.style.display = "none";
+    document.querySelector(".weather").style.display = "block";
+  }
 }
 
 btn.addEventListener("click", () => {
