@@ -93,5 +93,6 @@ nav .circle {
   transform: scale(1.5);
   background: #f53192;
   color: #fff;
+  cursor: pointer;
 
 }
