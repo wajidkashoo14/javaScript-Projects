@@ -9,13 +9,38 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
+    <script src="https://kit.fontawesome.com/7360475f8d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css" />
     <title>Music Player</title>
 </head>
 <body>
 <div class="container">
-  kaaz
-  
+  <div class="music-player">
+    <nav>
+      <div class="circle">
+        <i class="fa-solid fa-angle-left"></i>
+      </div>
+      <div class="circle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </nav>
+    <p>Song Currently Playing</p>
+    <h1>Despecito</h1>
+    <p>Kaaz</p>
+
+    <audio id="song">
+      <source src="./asset/me.mp3" type="audio/mpeg">
+    </audio>
+    <input type="range" value="0" id="progress">
+
+    <div class="controls">
+      <div><i class="fa-solid fa-backward"></i></div>
+      <div><i class="fa-solid fa-play" id="control-icon"></i></div>
+      <div><i class="fa-solid fa-forward"></i></div>
+    </div>
+    
+  </div>
+
 </div>
 
 
